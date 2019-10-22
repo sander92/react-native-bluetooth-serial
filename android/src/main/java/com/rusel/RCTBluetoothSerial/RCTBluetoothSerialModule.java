@@ -40,6 +40,7 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
     private static final String CONN_SUCCESS = "connectionSuccess";
     private static final String CONN_FAILED = "connectionFailed";
     private static final String CONN_LOST = "connectionLost";
+    private static final String DEVICE_FOUND = "deviceFound";
     private static final String DEVICE_READ = "read";
     private static final String ERROR = "error";
 
@@ -651,6 +652,7 @@ public class RCTBluetoothSerialModule extends ReactContextBaseJavaModule impleme
                 if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                     WritableMap d = deviceToWritableMap(device);
+                    sendEvent(DEVICE_FOUND, d);
                     unpairedDevices.pushMap(d);
                 } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                     if (D) Log.d(TAG, "Discovery finished");

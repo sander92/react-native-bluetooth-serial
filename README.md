@@ -104,6 +104,7 @@ Currently provided events are:
 - `bluetoothDisabled` - when user disabled bt
 - `connectionSuccess` - when app connected to device
 - `connectionLost` - when app lost connection to device (fired with `bluetoothDisabled`)
+- `deviceFound` - when device is discovered during unpaired device scan (android only)
 
 You can use `BluetoothSerial.removeListener(eventName, callback)` to stop listening to an event
 
